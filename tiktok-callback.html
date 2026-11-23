@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Sign-in complete · Satoshi Auto Post</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sign-in complete</h1>
+    <p class="sub">ログインが終わりました。このページのアドレス欄の URL を全部コピーして、ターミナルに貼り付けてください。</p>
+  </header>
+  <p id="status"></p>
+  <p class="ja">このページは、どこにも情報を送りません。</p>
+</main>
+<script>
+  const p = new URLSearchParams(location.search);
+  document.getElementById("status").textContent =
+    p.get("error") ? "エラー: " + (p.get("error_description") || p.get("error"))
+    : p.get("code") ? "準備ができました。" : "コードが見つかりません。最初からやり直してください。";
+</script>
+</body>
+</html>
