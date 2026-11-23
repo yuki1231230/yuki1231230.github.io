@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Connect TikTok · Satoshi Auto Post</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 8px;
+         background: #111; color: #fff; text-decoration: none; font-weight: 600; }
+  .btn:hover, .btn:focus-visible { background: #333; outline: 2px solid var(--accent); outline-offset: 2px; }
+  ol li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Connect your TikTok account</h1>
+    <p class="sub">Satoshi Auto Post · for the owner of @learnjapanese_satoshi</p>
+    <nav>
+      <a href="./">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </header>
+
+  <p>Sign in with TikTok once to let Satoshi Auto Post publish your own Japanese-lesson videos to your account on a schedule.</p>
+
+  <h2>What the app will be allowed to do</h2>
+  <ul>
+    <li><code>user.info.basic</code>: read your display name and open id to confirm the correct account</li>
+    <li><code>video.upload</code> and <code>video.publish</code>: upload one of your videos and post it to your profile</li>
+  </ul>
+
+  <h2>How posting works</h2>
+  <ol>
+    <li>Before each post, the app checks your account's allowed privacy options and maximum video length.</li>
+    <li>It uploads one video with a caption in English and Japanese.</li>
+    <li>It publishes the video to your profile with the privacy level you chose in the settings.</li>
+  </ol>
+
+  <p style="margin-top: 28px"><a class="btn" id="connect" href="#">Continue with TikTok</a></p>
+  <p class="ja">TikTok でログインして、このアプリに投稿を許可します。</p>
+</main>
+<script>
+  const params = new URLSearchParams({
+    client_key: "sbawfdqsqkcxazlhuk",
+    response_type: "code",
+    scope: "user.info.basic,video.publish,video.upload",
+    redirect_uri: "https://yuki1231230.github.io/",
+    state: Math.random().toString(36).slice(2)
+  });
+  document.getElementById("connect").href = "https://www.tiktok.com/v2/auth/authorize/?" + params;
+</script>
+</body>
+</html>
